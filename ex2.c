@@ -11,6 +11,12 @@ int main(int argc,char* argv[]){
   FILE* fpo;
   Repre arg2={0};
   int i;
+
+  if(argc!=3){
+    printf("------option error ------\n");
+    exit(1);
+  }
+
   if(NULL==(fpi=fopen(argv[1],"r"))){
     fprintf(stdout, "file open error\n");
     exit(1);
@@ -23,8 +29,8 @@ int main(int argc,char* argv[]){
 
   i=0;
   while(1){
-    numberGet(fpi,arg[i])
-    if(isnan(arg[i])) break;
+
+    if(!numberGet(fpi,arg[i]) break;
     i++;
   }
   calcRepre(arg1,&arg2,i);

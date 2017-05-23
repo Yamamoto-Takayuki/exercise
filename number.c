@@ -3,16 +3,17 @@
 #include<string.h>
 #include<math.h>
 
-void numberGet(FILE* fpt,float* c){
-  char buf[256];
+int numberGet(FILE* fpt,float* c){
+  char buf[256];;
   if(NULL==fgets(buf,256,fpt)){
     fprintf(stdout, "file is empty");
-    *c=nanf("empty");
+    return 0;
   }else if(strlen(buf)<=0){
-    *c=nanf("empty");
-  }else{
-  *c=(float)atof(buf);
+    return 0;
   }
+
+  *c=(float)atof(buf);
+  return 1;
 }
 
 void numberPut(FILE* fpt,float* d){
