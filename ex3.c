@@ -17,10 +17,11 @@ int main (int argc,char* argv[]){
       fprintf(stdout, "------%s open error------",argv[2];
       exit(1);
     }
-        if(NULL==(fpo=fopen(argv[3],"a"))){
+  if(NULL==(fpo=fopen(argv[3],"a"))){
       fprintf(stdout, "------%s open error------",argv[3]);
       exit(1
     }
+
 
 
 }
