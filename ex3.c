@@ -4,6 +4,10 @@
 
 int main (int argc,char* argv[]){
 
+int i,j;
+FILE* fpi;
+FILE* fpo;
+
   if(argc!=4){
     printf("------option error ------\n");
     exit(1);

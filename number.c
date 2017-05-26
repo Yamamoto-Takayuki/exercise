@@ -8,11 +8,13 @@ int numberGet(FILE* fpt,float* c){
   if(NULL==fgets(buf,256,fpt)){
     fprintf(stdout, "file is empty");
     return 0;
-  }else if(strlen(buf)<=0){
-    return 0;
   }
 
   *c=(float)atof(buf);
+  if(isnan(c)){
+    fprintf(stdout, "Not a Number\n");
+    return 0;
+  }
   return 1;
 }
 

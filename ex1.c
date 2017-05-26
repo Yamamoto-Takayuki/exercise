@@ -35,7 +35,8 @@ int main(int argc,char* argv[]){
 
 
   if(!numberGet(fpi2,&arg2)||!numberGet(fpi1,&arg1)){
-    fprintf(stdout, "number error\n");
+    fprintf(stdout, "number error\n
+                      exit program");
     exit(1);
   }
   ave=average(arg1,arg2);
