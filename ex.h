@@ -13,6 +13,14 @@ typedef struct Repre{
   float kurtosis;
 }Repre;
 
+typedef struct Class{
+  int ID;
+  int kaiseki;
+  int sennkei;
+  int seibutsu;
+  
+}
+
 
 extern void numberGet(FILE* fpt,float* c);
 extern void numberPut(FILE* fpt,float* d);

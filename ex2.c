@@ -30,15 +30,20 @@ int main(int argc,char* argv[]){
   i=0;
   while(1){
 
-    if(!numberGet(fpi,arg[i]) break;
+    if(!numberGet(fpi,arg+i) break;
     i++;
   }
   calcRepre(arg1,&arg2,i);
-  numberPut(fpo,arg2.mean);
-  numberPut(fpo,arg2.sd);
-  numberPut(fpo,arg2.se);
-  numberPut(fpo,arg2.skewness);
-  numberPut(fpo,arg2.kurtosis);
+  fprintf(fpo, "mean:");
+  yamlPut(fpo,"mean",arg2.mean,2,0);
+  fprintf(fpo, "sd:");
+  yamlPut(fpo,"sd",arg2.sd,2,0);
+  fprintf(fpo, "se:");
+  yamlPut(fpo,"se",arg2.se,2,0);
+  fprintf(fpo, "skewness:");
+  yamlPut(fpo,"skewness",arg2.skewness,2,0);
+  fprintf(fpo, "kurtosis:");
+  yamlPut(fpo,"kurtosis",arg2.kurtosis,2,0);
 
 return 0;
 }
