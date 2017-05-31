@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include <math.h>
-#include "ex.h"
+#include "calc.h"
 
 int main(int argc,char* argv[]){
   Class head;

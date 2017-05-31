@@ -3,27 +3,33 @@
 LIBS=-lm
 SOURCE= average.c\
 				number.c\
-				calc.c
+				calc.c\
+				yaml.c\
+				ClassFile.c
 
 
 
 .c.o:
 	gcc -g -Wall -c $*.c -o $*.o
 
-all: ex1 ex2
-win: ex1.exe ex2.exe
+all: ex1 ex2 ex3
+win: ex1.exe ex2.exe ex3.exe
 
 
 ex1: ex1.o libex.a
 	gcc -g -Wall -o $@ ex1.o -L./ -lex $(LIBS)
 ex2: ex2.o libex.a
 	gcc -g -Wall -o $@ ex2.o -L./ -lex $(LIBS)
+ex3: ex3.o libex.a
+	gcc -g -Wall -o $@ ex3.o -L./ -lex $(LIBS)
 
 
 ex1.exe: ex1.o libex.a
 	gcc -g -Wall -o $@ ex1.o -L./ -lex $(LIBS)
 ex2.exe: ex2.o libex.a
 	gcc -g -Wall -o $@ ex2.o -L./ -lex $(LIBS)
+ex3.exe: ex3.o libex.a
+	gcc -g -Wall -o $@ ex3.o -L./ -lex $(LIBS)
 
 
 libex.a: $(SOURCE:.c=.o)

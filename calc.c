@@ -83,7 +83,7 @@ void calcRepre(int N,Repre* rep){
 
 }
 
-void calcDi(float* DV,float value,Repre* rep,){
+void calcDi(float* DV,float value,Repre* rep){
   DV=((value-rep->mean)*10/rep->sd)+50;
 }
 

@@ -37,5 +37,6 @@ typedef struct seiseki{
 extern void numberGet(FILE* fpt,float* c);
 extern void numberPut(FILE* fpt,float* d);
 extern float average(float a,float b);
-extern void calcRepre(float a[],Repre* arg,int N);
+extern void yamlPut(FILE* fpt,char* term,void* value,int type,int mode);
+
 #endif
