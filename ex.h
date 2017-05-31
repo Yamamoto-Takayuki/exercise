@@ -23,12 +23,12 @@ typedef struct seiseki{
   int kaiseki;
   int senkei;
   int seibutsu;
-  int sum
+  int sum;
+  float DV_kaiseki;
+  float DV_senkei;
+  float DV_seibutsu;
+  float DV_sum;
   float value;
-  float d_kaiseki;
-  float d_senkei;
-  float d_seibutsu
-  float d_sum;
   seiseki* prev;
   seiseki* next;
 }Class;

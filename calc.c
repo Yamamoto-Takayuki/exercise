@@ -30,25 +30,31 @@ void calcSeiseki(Class* head,Repre* rep){
     calcAdd(current->kaiseki,rep_kai);
     calcAdd(current->senkei,rep_sen);
     calcAdd(current->seibutsu,rep_sei);
+    calcAdd(current->sum,rep_sum)
     ++i;
   }
   calcMean(i,rep_kai);
   calcMean(i,rep_sen);
   calcMean(i,rep_sei);
+  calcMean(i,rep_sum);
 
   for(current=head;current!=NULL;current=current->next){
     calcSdAdd(current->kaiseki,rep_kai);
     calcSdAdd(current->senkei,rep_sen);
     calcSdAdd(current->seibutsu,rep_sei);
+    calcSdAdd(current->sum,rep_sum);
   }
   calcRepre(i,rep_kai);
   calcRepre(i,rep_sen);
   calcRepre(i,rep_sei);
+  calcRepre(i,rep_sum);
 
   for(current=head;current!=NULL;current=current->next){
-    calcDi(current->Di,current->kaiseki,rep_kai);
-    calcDi(current->Di,current->senkei,rep_sen);
-    calcDi(current->Di,current->seibutsu,rep_sei);
+    calcDi(current->DV_kaiseki,current->kaiseki,rep_kai);
+    calcDi(current->DV_senkei,current->senkei,rep_sen);
+    calcDi(current->DV_seibutsu,current->seibutsu,rep_sei);
+    calcDi(current->DV_sum,current->sum,rep_sum);
+
   }
 }
 
@@ -77,6 +83,13 @@ void calcRepre(int N,Repre* rep){
 
 }
 
-void calcDi(float* Di,float value,Repre* rep,){
-  *Di=((value-mean)*10/rep->sd)+50;
+void calcDi(float* DV,float value,Repre* rep,){
+  DV=((value-rep->mean)*10/rep->sd)+50;
+}
+
+void calcSum(Class* head){
+  Class* p;
+  for(p=head;p!=NULL;p=p->next){
+    p->sum=p->senkei+p->kaiseki+p->seibutsu;
+  }
 }

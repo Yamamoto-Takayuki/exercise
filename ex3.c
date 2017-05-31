@@ -32,7 +32,9 @@ Class head;
   head->next=NULL;
   while (addClassFile(fpi,&head));
 
-  sortClass(&head);
+  calcSum(&head);
+  sumToValue(&head);
+  mergeSortClass(&head);
   putClassFile(fpo,&head);
   return 0;
 }

@@ -13,7 +13,7 @@ int numberGet(FILE* fpt,float* c){
   *c=(float)atof(buf);
   if(isnan(c)){
     fprintf(stdout, "Not a Number\n");
-    return 0;
+    return
   }
   return 1;
 }
