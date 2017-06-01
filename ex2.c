@@ -3,6 +3,7 @@
 #include<string.h>
 #include <math.h>
 #include "calc.h"
+#include "class.h"
 
 int main(int argc,char* argv[]){
   Class head;
@@ -33,27 +34,22 @@ int main(int argc,char* argv[]){
   if(numberGet(fpi,&temp)){
     head.value=temp;
     head.next=NULL;
-    current=head;
+    current=&head;
 }
 
   while(numberGet(fpi,&temp)){
-  current.next=(Class*)malloc(sizeof(Class));
-  current=current.next;
-  current.value=temp;
+  current->next=(Class*)malloc(sizeof(Class));
+  current=current->next;
+  current->value=temp;
   current->next=NULL;
 }
 
   calcRepre(&head,&arg);
-  fprintf(fpo, "mean:");
-  yamlPut(fpo,"mean",arg.mean,2,0);
-  fprintf(fpo, "sd:");
-  yamlPut(fpo,"sd",arg.sd,2,0);
-  fprintf(fpo, "se:");
-  yamlPut(fpo,"se",arg.se,2,0);
-  fprintf(fpo, "skewness:");
-  yamlPut(fpo,"skewness",arg.skewness,2,0);
-  fprintf(fpo, "kurtosis:");
-  yamlPut(fpo,"kurtosis",arg.kurtosis,2,0);
-
+  yamlPut(fpo,"mean",&(arg.mean),2,0);
+  yamlPut(fpo,"sd",&(arg.sd),2,0);
+  yamlPut(fpo,"se",&(arg.se),2,0);
+  yamlPut(fpo,"skewness",&(arg.skewness),2,0);
+  yamlPut(fpo,"kurtosis",&(arg.kurtosis),2,0);
+  freeClass(head.next);
 return 0;
 }

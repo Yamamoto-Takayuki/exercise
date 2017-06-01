@@ -37,9 +37,11 @@ libex.a: $(SOURCE:.c=.o)
 
 test:
 	./ex1 arg1ex1.txt arg2ex1.txt ex1output.txt
-
+	./ex2 arg1ex2.txt ex2output.txt
+	./ex3 arg1ex3.txt ex3output.txt 1
+	./ex3 arg1ex3.txt ex4output.txt 2
 clean:
-	rm -rf *.o *.exe *.a ex1 ex2
+	rm -rf *.o *.exe *.a ex1 ex2 ex3
 
 -include dependency
 

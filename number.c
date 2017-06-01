@@ -6,14 +6,16 @@
 int numberGet(FILE* fpt,float* c){
   char buf[256];;
   if(NULL==fgets(buf,256,fpt)){
-    fprintf(stdout, "file is empty");
+    fprintf(stdout, "End of File\n");
     return 0;
   }
-
+if(*buf=='\n'){
+    return 0;
+  }
   *c=(float)atof(buf);
-  if(isnan(c)){
+  if(isnan(*c)){
     fprintf(stdout, "Not a Number\n");
-    return
+    return 0;
   }
   return 1;
 }

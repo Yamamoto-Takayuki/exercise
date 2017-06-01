@@ -6,9 +6,9 @@
 #include<math.h>
 
 typedef struct numerou{
-  float value
-  numerou* next;
-}
+  float value;
+  struct numerou* next;
+}numerou;
 
 typedef struct Repre{
   float mean;
@@ -29,12 +29,18 @@ typedef struct seiseki{
   float DV_seibutsu;
   float DV_sum;
   float value;
-  seiseki* prev;
-  seiseki* next;
+  struct seiseki* prev;
+  struct seiseki* next;
 }Class;
 
+typedef struct Repre2{
+  Repre rep_kai;
+  Repre rep_sen;
+  Repre rep_sei;
+  Repre rep_sum;
+}Repre2;
 
-extern void numberGet(FILE* fpt,float* c);
+extern int numberGet(FILE* fpt,float* c);
 extern void numberPut(FILE* fpt,float* d);
 extern float average(float a,float b);
 extern void yamlPut(FILE* fpt,char* term,void* value,int type,int mode);

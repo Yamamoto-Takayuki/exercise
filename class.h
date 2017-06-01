@@ -12,5 +12,5 @@ extern Class* mergeList(Class* list1,Class* list2);
 extern Class* mergeSort(Class* p);
 extern void putClassFile(FILE* fp,Class* head);
 extern void putClassFileDV(FILE* fp,Class* head);
-
+extern void freeClass(Class* head);
 #endif

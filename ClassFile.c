@@ -2,11 +2,12 @@
 #include<stdlib.h>
 #include<string.h>
 #include "ex.h"
+#include "class.h"
 
 
 int getClassFile(FILE* fpt,Class* class){
   char* buf;
-  char* str;
+  char str[256];
 
   if(NULL==fgets(str,256,fpt)){
     return 0;
@@ -19,6 +20,11 @@ int getClassFile(FILE* fpt,Class* class){
     class->senkei=atoi(buf);
     buf=strtok(NULL," ");
     class->seibutsu=atoi(buf);
+    class->DV_kaiseki=0;
+    class->DV_senkei=0;
+    class->DV_seibutsu=0;
+    class->DV_sum=0;
+    class->value=0;
 
   }
 
@@ -35,18 +41,19 @@ void sumToValue(Class* head){
 void DV_sumToValue(Class* head){
   Class* p;
   for(p=head;p!=NULL;p=p->next){
-    p->value=p->DV_sum
+    p->value=p->DV_sum;
   }
 }
 
 
 int addClassFile(FILE* fpt,Class* head){
 
-  Class* prev;
   Class* current;
   Class* class;
-
-  for(current=head;current->next!=NULL;current=currnt->next);
+  current=head;
+  while(current->next!=NULL){
+    current=current->next;
+  }
     class=(Class*)malloc(sizeof(Class));
     if(getClassFile(fpt,class)){
     current->next=class;
@@ -77,7 +84,7 @@ Class* mergeList(Class* list1,Class* list2){
   Class* p;
   p=&head;
   while((list1!=NULL)&&(list2!=NULL)){
-    if(list1->value<=list2->value){
+    if(list1->value>=list2->value){
       p->next=list1;
       list1->prev=p;
       p=list1;
@@ -103,7 +110,7 @@ Class* mergeSort(Class* p){
 
   Class* f; //forward
   Class* b; //backward
-  Class* part //partition
+  Class* part; //partition
 
   if(p==NULL||p->next==NULL){
     return p;
@@ -119,19 +126,31 @@ Class* mergeSort(Class* p){
   part=f->next; //x x x f part x x b
   f->next=NULL; //x x x f | part x x b
 
+
   return (mergeList(mergeSort(p),mergeSort(part)));
 }
 
 void putClassFile(FILE* fp,Class* head){
   Class* p;
   for(p=head;p!=NULL;p=p->next){
-    fprintf(fp, "%d %d %d %d %d\n",p->ID,p->sum,p->kaiseki,p->senkei,p->seibutsu );
+    fprintf(fp, "%d %d %d %d %d\n",p->ID,p->sum,p->kaiseki,p->senkei,p->seibutsu);
   }
 }
 
 void putClassFileDV(FILE* fp,Class* head){
   Class* p;
   for(p=head;p!=NULL;p=p->next){
-    fprintf(fp,"%d %d %d %d %d\n",p->ID,p->DV_sum,p->DV_kaiseki,p->DV_senkei,p->DV_seibutsu);
+    fprintf(fp,"%d %f %f %f %f\n",p->ID,p->DV_sum,p->DV_kaiseki,p->DV_senkei,p->DV_seibutsu);
+  }
+}
+
+void freeClass(Class* head){
+  Class* p;
+  Class* temp;
+  p=head;
+  while(p!=NULL){
+    temp=p;
+    p=p->next;
+    free(temp);
   }
 }
