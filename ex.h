@@ -40,6 +40,16 @@ typedef struct Repre2{
   Repre rep_sum;
 }Repre2;
 
+typedef struct dispersion{
+  float disp_kaiseki; //XX
+  float disp_senkei; //YY
+  float disp_seibutsu; //ZZ
+  float cov_XY; //kaiseki-senkei
+  float cov_XZ; //kaiseki-seibutsu
+  float cov_YZ; //senkei-seibutsu
+}Disp;
+
+
 extern int numberGet(FILE* fpt,float* c);
 extern void numberPut(FILE* fpt,float* d);
 extern float average(float a,float b);
